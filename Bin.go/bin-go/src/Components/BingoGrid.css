@@ -1,0 +1,9 @@
+.bingo-grid{
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    justify-content:space-evenly;
+    justify-items: center;
+    align-content: space-evenly;
+    align-items: center;
+    grid-gap: 50px;
+}

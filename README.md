@@ -1,1 +1,1 @@
-# Bingo
+# Bin.go
