@@ -8,29 +8,27 @@
 
 .bingo-card {
     background: var(--bingo-bg);
-    width: 150px;
-    height: 150px;
-    font-size: 23px;
+    width: 100%;
+    height: 100%;
+    font-size: 1vw;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-content: center;
     border-radius: 10px;
-    padding: 15px;
     box-shadow: 2px 3px black;
 }
 
 .bingo-card-complete {
     background: var(--bingo-bg-complete);
-    width: 150px;
-    height: 150px;
-    font-size: 23px;
+    width: 100%;
+    height: 100%;
+    font-size: 1vw;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-content: center;
     border-radius: 10px;
-    padding: 15px;
     box-shadow: 2px 3px black;
 }
 
@@ -50,7 +48,6 @@
 }
 
 .bingo-card-complete p {
-    margin-right: calc(-100% - 15px);
 }
 
 .check {
@@ -60,8 +57,8 @@
 }
 
 .check-complete {
-    margin-top: -15px;
-    margin-right: -15px;
-    width: 150px;
-    height: 150px;
+    height: 25vh;
+    /* top: 5vh; */
+    padding-top: 2vh;
+    position: absolute;
 }
