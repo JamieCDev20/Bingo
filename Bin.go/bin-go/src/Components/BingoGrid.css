@@ -1,12 +1,11 @@
 .bingo-grid{
     display: grid;
-    grid-template-columns: 30vw 30vw 30vw;
+    justify-self: center;
+    grid-template-columns: 28vw 28vw 28vw;
     grid-template-rows: 30vh 30vh 30vh;
-    justify-content:space-evenly;
-    justify-items: center;
+    justify-content: space-evenly;
     align-content: space-evenly;
-    align-items: center;
     grid-gap: 0.1vw;
-    width: 100vw;
+    width: 95vw;
     height: 100vh;
 }

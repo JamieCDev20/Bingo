@@ -1,6 +1,6 @@
 import BingoCard, { bingoProps } from "./BingoCard";
 import "./BingoGrid.css";
-// import NewCard from "./NewCard";
+import { io } from "socket.io-client";
 
 const bingoData: bingoProps[] = [
     {
@@ -33,6 +33,21 @@ const bingoData: bingoProps[] = [
 ];
 
 const BingoGrid = () => {
+
+    // const [gridData, setGridData] = useState(bingoData);
+    
+
+    const sock = io("localhost:5000/", {
+        transports: ["websocket"]
+    })
+    
+
+    sock.on("connect", () => {
+        console.log("Connected");
+    })
+
+
+
     return (
         <div className="bingo-grid">
             {bingoData.map((bd, index) => {
