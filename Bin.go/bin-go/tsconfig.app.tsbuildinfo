@@ -1,1 +1,1 @@
-{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/bingocard.tsx","./src/components/bingogrid.tsx","./src/components/newcard.tsx"],"version":"5.6.2"}
+{"root":["./src/App.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/Components/BingoCard.tsx","./src/Components/BingoGrid.tsx","./src/Components/NewCard.tsx"],"version":"5.6.2"}

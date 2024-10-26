@@ -6,6 +6,7 @@ export interface bingoProps {
     title?: string;
     complete?: boolean;
     children?: string;
+    onclick?: () => void
 }
 
 const BingoCard = ({ title, children }: bingoProps) => {

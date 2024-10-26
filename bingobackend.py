@@ -1,44 +1,35 @@
-from flask import Flask, render_template as rt, request
-from flask_socketio import SocketIO, emit
-# from flask_cors import CORS
-import os
-import threading
-import asyncio
-from websockets.server import serve
-
-template_dir = os.path.abspath('./Bin.go/bin-go')
+from flask import Flask, render_template
+from flask_socketio import SocketIO
+import json
 
 app = Flask(__name__, template_folder='./Bin.go/bin-go/dist/', static_folder='./Bin.go/bin-go/dist/assets')
-app.secret_key = "LolVerdantComedyNight"
+socketio = SocketIO(app, cors_allowed_origins="*")
 
-socket = SocketIO(app)
+gridData = []
 
-# async def echo(websocket):
-#     async for message in websocket:
-#         await websocket.send(message)
-
-# async def main():
-#     async with serve(echo, "ws://localhost", 5001):
-#         await asyncio.get_running_loop().create_future()
-
-@socket.on("connect")
-def connected():
-    """event listener when client connects to the server"""
-    print(request.sid)
-    print("client has connected")
-    emit("connect",{"data":f"id: {request.sid} is connected"})
-
-@socket.on('data')
-def handle_message(data):
-    """event listener when client types a message"""
-    print("data from the front end: ",str(data))
-    emit("data",{'data':data,'id':request.sid},broadcast=True)
+for i in range(9):
+    gridData.append("")
 
 
+
+# Default route to serve index.html
 @app.route('/')
-def BingoPage():
-    return rt("index.html")
+def index():
+    return render_template('index.html')
 
-if __name__ == "__main__":
-    # app.run()
-    socket.run(app, debug=True, port=5000)
+# WebSocket events
+@socketio.on('connect')
+def handle_connect():
+    print("Client connected")
+    socketio.emit('message', {'data': 'Connected!'})
+
+@socketio.on('disconnect')
+def handle_disconnect():
+    print("Client disconnected")
+
+@socketio.on('clicked')
+def handle_click(dat):
+    socketio.emit('message', {'data':'button was clicked'})
+
+if __name__ == '__main__':
+    socketio.run(app, host='0.0.0.0', port=8000)
