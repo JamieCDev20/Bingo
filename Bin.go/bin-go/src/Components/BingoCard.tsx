@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./BingoCard.css";
 import check from "../assets/Checkmark.webp";
 
@@ -6,21 +5,16 @@ export interface bingoProps {
     title?: string;
     complete?: boolean;
     children?: string;
-    onclick?: () => void
+    onclick: () => void
 }
 
-const BingoCard = ({ title, children }: bingoProps) => {
-    const [complete, setComplete] = useState(false);
-
-    const handleClick = () => {
-        // if (complete) return;
-        setComplete(!complete);
-    };
+const BingoCard = ({ title, children, onclick, complete }: bingoProps) => {
+    // const [complete, setComplete] = useState(false);
 
     return (
         <section
             className={"bingo-card" + (complete ? "-complete" : "")}
-            onClick={handleClick}
+            onClick={onclick}
         >
             <p>{title}{children}</p>
             <img
