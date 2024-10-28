@@ -6,33 +6,35 @@ import { io } from "socket.io-client";
 function onclick() {
 }
 
+const defaultMsg = "Disconnected";
+
 const bingoData: bingoProps[] = [
     {
-        title: "Bingo Prompt 1",
+        title: defaultMsg,
         onclick: onclick
     },
     {
-        title: "Bingo Prompt 2",
+        title: defaultMsg,
         onclick: onclick
     },
     {
-        title: "Bingo Prompt 3",
+        title: defaultMsg,
         onclick: onclick
     },
     {
-        title: "Bingo Prompt 4",
+        title: defaultMsg,
         onclick: onclick
     },
     {
-        title: "Bingo Prompt 5",
+        title: defaultMsg,
         onclick: onclick
     },
     {
-        title: "Bingo Prompt 6",
+        title: defaultMsg,
         onclick: onclick
     },
     {
-        title: "Bingo Prompt 7",
+        title: defaultMsg,
         onclick: onclick
     },
     {
@@ -40,7 +42,7 @@ const bingoData: bingoProps[] = [
         onclick: onclick
     },
     {
-        title: "Bingo Prompt 9",
+        title: defaultMsg,
         onclick: onclick
     },
 ];

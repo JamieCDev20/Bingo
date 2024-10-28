@@ -1,11 +1,14 @@
+#root {
+    --grid-cell-width: 17vw;
+}
+
 .bingo-grid{
     display: grid;
     justify-self: center;
-    grid-template-columns: 28vw 28vw 28vw;
-    grid-template-rows: 30vh 30vh 30vh;
+    grid-template-columns: var(--grid-cell-width) var(--grid-cell-width) var(--grid-cell-width) var(--grid-cell-width) var(--grid-cell-width);
     justify-content: space-evenly;
-    align-content: space-evenly;
-    grid-gap: 0.1vw;
-    width: 95vw;
-    height: 100vh;
+    align-content: start;
+    aspect-ratio: 1/1;
+    grid-gap: 2vw;
+    width: 100vw;
 }
