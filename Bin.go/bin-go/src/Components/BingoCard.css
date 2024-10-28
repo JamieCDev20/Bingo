@@ -6,30 +6,23 @@
     --bingo-bg-complete: #2f3850;
 }
 
-.bingo-card {
+.bingo-card,
+.bingo-card-complete {
     background: var(--bingo-bg);
     width: 100%;
     height: 100%;
-    font-size: 1vw;
+    font-size: 2vw;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-content: center;
+    align-items: center;
     border-radius: 10px;
     box-shadow: 2px 3px black;
 }
 
 .bingo-card-complete {
     background: var(--bingo-bg-complete);
-    width: 100%;
-    height: 100%;
-    font-size: 1vw;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    border-radius: 10px;
-    box-shadow: 2px 3px black;
 }
 
 .bingo-card:hover {
@@ -42,12 +35,9 @@
 
 .bingo-card p,
 .bingo-card-complete p {
-    width: 130px;
+    width: 80%;
     text-align: center;
     vertical-align: middle;
-}
-
-.bingo-card-complete p {
 }
 
 .check {
