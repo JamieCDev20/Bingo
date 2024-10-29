@@ -44,5 +44,10 @@ def handle_click(dat):
 def handle_get_data():
     socketio.emit(data_response, data)
 
+@socketio.on('set_data')
+def handle_set_data(data_recv):
+    data = data_recv
+    handle_get_data()
+
 if __name__ == '__main__':
     socketio.run(app, host='0.0.0.0', port=8000, debug=True)
