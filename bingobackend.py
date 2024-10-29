@@ -24,6 +24,10 @@ for i in range(9):
 def index():
     return render_template('index.html')
 
+@app.route('/setup')
+def setup():
+    return render_template('setup.html')
+
 # WebSocket events
 @socketio.on('connect')
 def handle_connect():
