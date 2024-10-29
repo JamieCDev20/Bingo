@@ -58,7 +58,7 @@ const BingoGrid = () => {
 
     let socket = io("http://192.168.178.23:8000", { transports: ["websocket"] });
 
-    console.log("Created Bingo Grid");
+    // console.log("Created Bingo Grid");
 
     useEffect(() => {
         // socket = io("http://192.168.178.23:8000", { transports: ["websocket"] });

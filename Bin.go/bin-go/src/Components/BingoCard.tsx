@@ -5,6 +5,7 @@ export interface bingoProps {
     title?: string;
     complete?: boolean;
     children?: string;
+    center?: boolean;
     onclick: () => void
 }
 
