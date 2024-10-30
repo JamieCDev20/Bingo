@@ -1,13 +1,18 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import BingoGrid from "./Components/BingoGrid";
+import BingoPage from "./Components/BingoPage";
+import SetupPage from "./Components/Setup/SetupPage";
+// import BingoGrid from "./Components/BingoGrid";
 
 function App() {
 
     return (
-        <>
-            <header className="title">Bingo!</header>
-            <BingoGrid />
-        </>
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<BingoPage/>}/>
+                <Route path="/setup" element={<SetupPage/>}/>
+            </Routes>
+        </BrowserRouter>
     );
 }
 

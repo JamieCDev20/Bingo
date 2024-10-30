@@ -21,12 +21,9 @@ for i in range(9):
 
 # Default route to serve index.html
 @app.route('/')
+@app.route('/setup')
 def index():
     return render_template('index.html')
-
-@app.route('/setup')
-def setup():
-    return render_template('setup.html')
 
 # WebSocket events
 @socketio.on('connect')
