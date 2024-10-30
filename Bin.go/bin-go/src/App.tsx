@@ -8,7 +8,8 @@ import { io } from "socket.io-client";
 
 function App() {
 
-    let socket = useRef(io("http://10.17.7.166:8000", { transports: ["websocket"] }));
+    let socket = useRef(io("http://18.130.62.61:6021", { transports: ["websocket"] }));
+    // let socket = useRef(io("http://10.17.7.166:8000", { transports: ["websocket"] }));
 
     return (
         <BrowserRouter>
