@@ -13,7 +13,7 @@ data = {
     ]
 }
 
-for i in range(9):
+for i in range(25):
     data["items"].append({
         "title": f"bingo card {i+1}",
         "complete": False
@@ -44,10 +44,15 @@ def handle_click(dat):
 @socketio.on('get_data')
 def handle_get_data():
     socketio.emit(data_response, data)
+    
+@socketio.on('get_data-setup')
+def handle_get_data_setup():
+    socketio.emit("data_response-setup", data)
 
 @socketio.on('set_data')
 def handle_set_data(data_recv):
-    data = data_recv
+    print(json.dumps(data_recv))
+    data['items'] = data_recv["data"]
     handle_get_data()
 
 if __name__ == '__main__':

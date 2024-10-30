@@ -2,35 +2,79 @@ import './SetupPage.css'
 import '../BingoGrid.css'
 import SetupCard from './SetupCard'
 import { io } from 'socket.io-client';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { bingoProps } from '../BingoCard';
 
 const SetupPage = () => {
 
   const set_data = "set_data";
-  const get_data = "get_data";
-  const data_response = "data_response";
+  const get_data_setup = "get_data-setup";
+  const data_response_setup = "data_response-setup";
 
-  let gridData : bingoProps[];
+  const emptyGridData : bingoProps[] = [
+    {title: "", onclick: () => {}},
+    {title: "", onclick: () => {}},
+    {title: "", onclick: () => {}},
+    {title: "", onclick: () => {}},
+    {title: "", onclick: () => {}},
+    {title: "", onclick: () => {}},
+    {title: "", onclick: () => {}},
+    {title: "", onclick: () => {}},
+    {title: "", onclick: () => {}},
+    {title: "", onclick: () => {}},
+    {title: "", onclick: () => {}},
+    {title: "", onclick: () => {}},
+    {title: "", onclick: () => {}},
+    {title: "", onclick: () => {}},
+    {title: "", onclick: () => {}},
+    {title: "", onclick: () => {}},
+    {title: "", onclick: () => {}},
+    {title: "", onclick: () => {}},
+    {title: "", onclick: () => {}},
+    {title: "", onclick: () => {}},
+    {title: "", onclick: () => {}},
+    {title: "", onclick: () => {}},
+    {title: "", onclick: () => {}},
+    {title: "", onclick: () => {}},
+    {title: "", onclick: () => {}},
+  ]
 
-  let socket = io("http://192.168.178.23:8000", { transports: ["websocket"] });
+  const [gridData, setGridData] = useState(emptyGridData)
+
+
+  // let socket = io("http://192.168.178.23:8000", { transports: ["websocket"] });
+  let socket = io("http://10.17.7.166:8000", { transports: ["websocket"] });
 
   function cellChanged(id : number, val : string){
-    gridData[id].title = val;
-    
+    setGridData(prevData => 
+      prevData.map((input, i) =>
+        i === id ? {...input, title: val} : input
+      )
+    );
+    console.log("Sending data")
     socket.emit(set_data, { data: gridData });
 
     return;
   }
 
+  // function resetGridData(){
+  //   setGridData(prevData => 
+  //     prevData.map(input => 
+  //     input.id > -1 ? {...input, complete: false} : input
+  //     )
+  //   )
+  // }
+
   useEffect(() => {
     socket.on("connect", () => {
       console.log("Socket connected");
-      socket.emit(get_data);
+      socket.emit(get_data_setup);
     });
 
-    socket.on(data_response, (data) => {
-      gridData = data;
+    socket.on(data_response_setup, (data) => {
+      console.log("Received data");
+      console.log(data.items);
+      setGridData(data.items);
     })
 
     return () => {
@@ -43,9 +87,10 @@ const SetupPage = () => {
   return (
     <section className='bingo-grid'>
       {
-        [...Array<number>(25)].map((x, i) => {
-          if(typeof(x) != typeof(0))
-            return i != 12? <SetupCard id={i} cellChange={cellChanged}/> : <div>THE MIDDLE</div>
+        gridData.map((x, i) => {
+            return i != 12? 
+            <SetupCard key={i} id={i} cellChange={cellChanged} text={x.title}/> : <p>MIDDLE</p>
+            // <BingoCard id={12} onclick={resetGridData} title='RESET PROGRESS'/>
         })
       }
     </section>

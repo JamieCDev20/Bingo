@@ -29,22 +29,6 @@ const bingoData: bingoProps[] = [
         title: defaultMsg,
         onclick: onclick
     },
-    {
-        title: defaultMsg,
-        onclick: onclick
-    },
-    {
-        title: defaultMsg,
-        onclick: onclick
-    },
-    {
-        title: "Bingo Prompt 8 but its way longer than all the others for testing",
-        onclick: onclick
-    },
-    {
-        title: defaultMsg,
-        onclick: onclick
-    },
 ];
 
 const BingoGrid = () => {
@@ -56,7 +40,8 @@ const BingoGrid = () => {
     const get_data = "get_data";
     const click = "clicked";
 
-    let socket = io("http://192.168.178.23:8000", { transports: ["websocket"] });
+    // let socket = io("http://192.168.178.23:8000", { transports: ["websocket"] });
+    let socket = io("http://10.17.7.166:8000", { transports: ["websocket"] });
 
     // console.log("Created Bingo Grid");
 
@@ -93,7 +78,7 @@ const BingoGrid = () => {
         <div className="bingo-grid">
             {gridData.map((bd, index) => {
                 return (
-                    <BingoCard key={index} complete={bd.complete} onclick={() => handle_click(index)}>
+                    <BingoCard key={index} title={bd.title} complete={bd.complete} onclick={() => handle_click(index)}>
                         {bd.title}
                     </BingoCard>
                 );

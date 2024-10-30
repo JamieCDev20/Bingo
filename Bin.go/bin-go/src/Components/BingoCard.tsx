@@ -2,14 +2,14 @@ import "./BingoCard.css";
 import check from "../assets/Checkmark.webp";
 
 export interface bingoProps {
-    title?: string;
+    title: string;
     complete?: boolean;
-    children?: string;
     center?: boolean;
+    children? : string
     onclick: () => void
 }
 
-const BingoCard = ({ title, children, onclick, complete }: bingoProps) => {
+const BingoCard = ({ title, onclick, complete }: bingoProps) => {
     // const [complete, setComplete] = useState(false);
 
     return (
@@ -17,7 +17,7 @@ const BingoCard = ({ title, children, onclick, complete }: bingoProps) => {
             className={"bingo-card" + (complete ? "-complete" : "")}
             onClick={onclick}
         >
-            <p>{title}{children}</p>
+            <p>{title}</p>
             <img
                 className={"check" + (complete ? "-complete" : "")}
                 src={check}
