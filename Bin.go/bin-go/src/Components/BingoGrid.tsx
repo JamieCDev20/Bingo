@@ -79,11 +79,11 @@ const BingoGrid = ({socket} : {socket : Socket}) => {
             {gridData.map((bd, index) => {
                 return (
                     index === 12?
+                    <BingoCard key={index} title={"FREE SPACE"} complete={false} onclick={() => {}}/>
+                    :
                     <BingoCard key={index} title={bd.title} complete={bd.complete} onclick={() => handle_click(index)}>
                         {bd.title}
                     </BingoCard>
-                    :
-                    <BingoCard key={index} title={"FREE SPACE"} complete={false} onclick={() => {}}/>
                 );
             })}
         </div>
