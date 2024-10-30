@@ -3,7 +3,7 @@ import '../BingoGrid.css'
 import SetupCard from './SetupCard'
 import { io } from 'socket.io-client';
 import { useEffect, useState } from 'react';
-import { bingoProps } from '../BingoCard';
+import BingoCard, { bingoProps } from '../BingoCard';
 
 const SetupPage = () => {
 
@@ -53,17 +53,19 @@ const SetupPage = () => {
     );
     console.log("Sending data")
     socket.emit(set_data, { data: gridData });
-
+    
     return;
   }
-
-  // function resetGridData(){
-  //   setGridData(prevData => 
-  //     prevData.map(input => 
-  //     input.id > -1 ? {...input, complete: false} : input
-  //     )
-  //   )
-  // }
+  
+  function resetGridData(){
+    setGridData(prevData => 
+      prevData.map((input, i) => 
+        i > -1 ? {...input, complete: false} : input
+      )
+    );
+    console.log("Sending data")
+    socket.emit(set_data, { data: gridData });
+  }
 
   useEffect(() => {
     socket.on("connect", () => {
@@ -89,8 +91,8 @@ const SetupPage = () => {
       {
         gridData.map((x, i) => {
             return i != 12? 
-            <SetupCard key={i} id={i} cellChange={cellChanged} text={x.title}/> : <p>MIDDLE</p>
-            // <BingoCard id={12} onclick={resetGridData} title='RESET PROGRESS'/>
+            <SetupCard key={i} id={i} cellChange={cellChanged} text={x.title}/> : 
+            <BingoCard onclick={resetGridData} title='RESET PROGRESS'/>
         })
       }
     </section>
