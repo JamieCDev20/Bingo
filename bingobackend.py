@@ -37,7 +37,7 @@ def handle_disconnect():
 
 @socketio.on('clicked')
 def handle_click(dat):
-    print("CLICKED ", dat)
+    # print("CLICKED ", dat)
     data['items'][dat["data"]]['complete'] = True
     socketio.emit(data_response, data)
 
@@ -51,7 +51,7 @@ def handle_get_data_setup():
 
 @socketio.on('set_data')
 def handle_set_data(data_recv):
-    print(json.dumps(data_recv))
+    # print(json.dumps(data_recv))
     data['items'] = data_recv["data"]
     handle_get_data()
 

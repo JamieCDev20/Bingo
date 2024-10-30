@@ -1,11 +1,11 @@
 import './SetupPage.css'
 import '../BingoGrid.css'
 import SetupCard from './SetupCard'
-import { io } from 'socket.io-client';
+import {Socket } from 'socket.io-client';
 import { useEffect, useState } from 'react';
 import BingoCard, { bingoProps } from '../BingoCard';
 
-const SetupPage = () => {
+const SetupPage = ({socket} : {socket : Socket}) => {
 
   const set_data = "set_data";
   const get_data_setup = "get_data-setup";
@@ -43,7 +43,6 @@ const SetupPage = () => {
 
 
   // let socket = io("http://192.168.178.23:8000", { transports: ["websocket"] });
-  let socket = io("http://10.17.7.166:8000", { transports: ["websocket"] });
 
   function cellChanged(id : number, val : string){
     setGridData(prevData => 
@@ -81,7 +80,7 @@ const SetupPage = () => {
 
     return () => {
       console.log("Socket unmounted");
-      socket?.disconnect();
+      socket.disconnect();
     };
 
   }, [])
